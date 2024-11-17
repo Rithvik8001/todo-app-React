@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { TodoProvider } from "./context";
-import TodoForm from "./components/ToDoForm";
-import TodoItem from "./components/ToDoItem";
+import TodoForm from "./components/TodoForm";
+import TodoItem from "./components/TodoItem";
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -46,22 +46,20 @@ function App() {
     <TodoProvider
       value={{ todos, addTodo, updateTodo, deleteTodo, toggleComplete }}
     >
-      <div className="bg-[#172842] min-h-screen py-8">
-        <div className="w-full max-w-2xl mx-auto shadow-md rounded-lg px-4 py-3 text-white">
-          <h1 className="text-4xl font-bold text-center mb-8 mt-2">
-            Todo List 📝
-          </h1>
-          <div className="mb-4">
-            {/* <TodoForm/> */}
-            <TodoForm />
-          </div>
-          <div className="flex flex-wrap gap-y-3">
-            {/* <TodoItem/> */}
-            {todos.map((todo) => (
-              <div key={todo.id} className="w-full">
-                <TodoItem todo={todo} />
-              </div>
-            ))}
+      <div className="min-h-screen bg-gray-100 py-8 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+          <div className="p-8">
+            <h1 className="text-3xl font-semibold text-gray-900 mb-6">
+              Todo List 📝
+            </h1>
+            <div className="mb-6">
+              <TodoForm />
+            </div>
+            <div className="space-y-4">
+              {todos.map((todo) => (
+                <TodoItem key={todo.id} todo={todo} />
+              ))}
+            </div>
           </div>
         </div>
       </div>

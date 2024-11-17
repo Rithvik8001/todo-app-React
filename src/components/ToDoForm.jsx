@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useTodo } from "../context";
 
 function TodoForm() {
@@ -7,25 +7,23 @@ function TodoForm() {
 
   const add = (e) => {
     e.preventDefault();
-
     if (!todo) return;
-
     addTodo({ todo, completed: false });
     setTodo("");
   };
 
   return (
-    <form onSubmit={add} className="flex">
+    <form onSubmit={add} className="flex space-x-2">
       <input
         type="text"
-        placeholder="Write Todo..."
-        className="w-full border border-black/10 rounded-l-lg px-3 outline-none duration-150 bg-white/20 py-1.5"
+        placeholder="Add a new task..."
+        className="flex-grow px-4 py-2 text-sm text-gray-700 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition duration-200 ease-in-out"
         value={todo}
         onChange={(e) => setTodo(e.target.value)}
       />
       <button
         type="submit"
-        className="rounded-r-lg px-3 py-1 bg-green-600 text-white shrink-0"
+        className="px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-200 ease-in-out"
       >
         Add
       </button>
